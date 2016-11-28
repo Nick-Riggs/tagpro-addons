@@ -106,6 +106,9 @@
     }
     
     presetSelector.change(() => {
-        tagpro.group.settings.apply(tagpro.group.settings.presets[presetSelector.val()]);
+        let i = presetSelector.val();
+        if(i < 0)
+            return;
+        tagpro.group.settings.apply(tagpro.group.settings.presets[i]);
     });
 }
