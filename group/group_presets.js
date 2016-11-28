@@ -22,8 +22,10 @@
             tagpro.group.socket.emit('setting', {name: key, value: value});
         },
         apply: function(preset) {
+            console.log(preset);
             for(let k in tagpro.group.settings.defaults)
-                set(k, preset.hasOwnProperty(k) ?
+                tagpro.group.settings.set(
+                    k, preset.hasOwnProperty(k) ?
                        preset[k] : tagpro.group.settings.defaults[k]);
         },
         presets: [
@@ -57,4 +59,16 @@
             }
         ]
     };
+    
+    
+    // DOM manipulation, you'll probably want to do this in a more convenient way if you implement this :)
+    let presetSelector = $('<select class="form-control">');
+    $('#private-settings > .settings-map > .row').prepend($('<div class="col-sm-12 js-leader-only">').append(presetSelector));
+    for(let i=0; i<tagpro.group.settings.presets.length; ++i) {
+        let preset = tagpro.group.settings.presets[i];
+        presetSelector.append($('<option>').prop('value', i).text('Preset: ' + preset.name));
+    }
+    presetSelector.change(function() {
+        tagpro.group.settings.apply(tagpro.group.settings.presets[presetSelector.val()]);
+    });
 }
