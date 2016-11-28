@@ -18,10 +18,10 @@
             buffDelay: false,
             potatoTime: "0"
         },
-        set: function(key, value) {
+        set: (key, value) => {
             tagpro.group.socket.emit('setting', {name: key, value: value});
         },
-        get: function(key) {
+        get: key => {
             switch(key) {
                 case 'buffDelay':
                     return $('input[name=buffDelay]').prop('checked');
@@ -40,7 +40,7 @@
                     return $('select[name=' + key + ']').val();
             }
         },
-        apply: function(preset) {
+        apply: preset => {
             console.log(preset);
             for(let k in tagpro.group.settings.defaults)
                 tagpro.group.settings.set(
@@ -105,7 +105,7 @@
         presetSelector.prepend(option).val(-1);
     }
     
-    presetSelector.change(function() {
+    presetSelector.change(() => {
         tagpro.group.settings.apply(tagpro.group.settings.presets[presetSelector.val()]);
     });
 }
