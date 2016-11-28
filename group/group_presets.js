@@ -75,6 +75,15 @@
                 time: '5',
                 caps: '3',
                 playerRespawnTime: '1000'
+            },
+            {
+                name: 'Testing',
+                time: '20',
+                caps: '0',
+                speedPadRespawnTime: '1000',
+                dynamiteRespawnTime: '1000',
+                buffRespawnTime: '1000',
+                playerRespawnTime: '1000'
             }
         ]
     };
