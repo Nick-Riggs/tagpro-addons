@@ -88,6 +88,22 @@
         ]
     };
     
+    // DOM manipulation, you'll probably want to do this in a more convenient way if you implement this :)
+    let presetSelector = $('<select class="form-control">');
+    $('#private-settings > .settings-map > .row').prepend($('<div class="col-sm-12 js-leader-only">').append(presetSelector));
+    for(let i=0; i<tagpro.group.settings.presets.length; ++i) {
+        let preset = tagpro.group.settings.presets[i];
+        presetSelector.append($('<option>').prop('value', i).text('Preset: ' + preset.name));
+    }
+    
+    presetSelector.change(() => {
+        let i = presetSelector.val();
+        if(i < 0)
+            return;
+        tagpro.group.settings.apply(tagpro.group.settings.presets[i]);
+        presetSelector.find('option[value=-1]').remove();
+    });
+    
     let detectPreset = () => {
         let presetSelected = false;
         for(let i=0; i<tagpro.group.settings.presets.length; ++i) {
@@ -106,22 +122,6 @@
         if(!presetSelected)
             presetSelector.val(-1);
     };
-    
-    // DOM manipulation, you'll probably want to do this in a more convenient way if you implement this :)
-    let presetSelector = $('<select class="form-control">');
-    $('#private-settings > .settings-map > .row').prepend($('<div class="col-sm-12 js-leader-only">').append(presetSelector));
-    for(let i=0; i<tagpro.group.settings.presets.length; ++i) {
-        let preset = tagpro.group.settings.presets[i];
-        presetSelector.append($('<option>').prop('value', i).text('Preset: ' + preset.name));
-    }
-    
-    presetSelector.change(() => {
-        let i = presetSelector.val();
-        if(i < 0)
-            return;
-        tagpro.group.settings.apply(tagpro.group.settings.presets[i]);
-        presetSelector.find('option[value=-1]').remove();
-    });
     
     /*
      * The setting packets sent when applying a preset cause an annoying stutter in the preset field.
