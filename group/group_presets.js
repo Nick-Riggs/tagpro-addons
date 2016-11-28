@@ -5,9 +5,8 @@
  * Creates a select box on the private settings, allowing the
  * group leader to select a predefined set of settings.
  * Available presets are PUG (defined as halves in ELTP rules),
- * Hockey (really just a PUG on hockey), OFM (5 mins OFM), Duel
- * (5 mins, 3 caps, 1s player respawn duel) and Testing (20 mins,
- * infinite caps, 1s respawn times).
+ * OFM (5 mins OFM), Duel (5 mins, 3 caps, 1s player respawn duel)
+ * and Testing (20 mins, infinite caps, 1s respawn times).
  */
 {
     tagpro.group.settings = {
@@ -64,13 +63,6 @@
             },
             {
                 name: 'Pick-Up Game',
-                caps: 0,
-                time: 10,
-                buffDelay: true
-            },
-            {
-                name: 'Hockey',
-                map: 'Hockey',
                 caps: 0,
                 time: 10,
                 buffDelay: true
