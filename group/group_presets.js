@@ -79,7 +79,24 @@
         ]
     };
     
-    let presetSelected = false;
+    let detectPreset = () => {
+        let presetSelected = false;
+        for(let i=0; i<tagpro.group.settings.presets.length; ++i) {
+            let preset = tagpro.group.settings.presets[i], selected = true;
+            for(let k in tagpro.group.settings.defaults) {
+                if(tagpro.group.settings.get(k) != (preset.hasOwnProperty(k) ? preset[k] : tagpro.group.settings.defaults[k])) {
+                    selected = false;
+                    break;
+                }
+            }
+            if(selected) {
+                presetSelected = true;
+                presetSelector.val(i);
+            }
+        }
+        if(!presetSelected)
+            presetSelector.val(-1);
+    };
     
     // DOM manipulation, you'll probably want to do this in a more convenient way if you implement this :)
     let presetSelector = $('<select class="form-control">');
@@ -87,22 +104,6 @@
     for(let i=0; i<tagpro.group.settings.presets.length; ++i) {
         let preset = tagpro.group.settings.presets[i];
         presetSelector.append($('<option>').prop('value', i).text('Preset: ' + preset.name));
-        
-        let selected = true;
-        for(let k in tagpro.group.settings.defaults) {
-            if(tagpro.group.settings.get(k) != (preset.hasOwnProperty(k) ? preset[k] : tagpro.group.settings.defaults[k])) {
-                selected = false;
-                break;
-            }
-        }
-        if(selected) {
-            presetSelected = true;
-            presetSelector.val(i);
-        }
-    }
-    if(!presetSelected) {
-        let option = $('<option>').prop('value', -1).text('Preset: None');
-        presetSelector.prepend(option).val(-1);
     }
     
     presetSelector.change(() => {
@@ -110,5 +111,16 @@
         if(i < 0)
             return;
         tagpro.group.settings.apply(tagpro.group.settings.presets[i]);
+        presetSelector.find('option[value=-1]').remove();
+    });
+    
+    /*
+     * The setting packets sent when applying a preset cause an annoying stutter in the preset field.
+     * This is an ugly way of preventing that. I'm sorry.
+     */
+    let detectTimeout = setTimeout(detectPreset, 0);
+    tagpro.group.socket.on('setting', () => {
+        clearTimeout(detectTimeout);
+        detectTimeout = setTimeout(detectPreset, 100);
     });
 }
