@@ -44,31 +44,15 @@ $(document).ready(function() {
 		"Have fun. If you are having a losing streak or you are getting too frustrated then take a break or turn your stats off for a while. Typically, you’ll play a lot worse when you’re frustrated."
 	];
 
-	// Find spot in DOM to place tip
-	function findInputSpot() {
-		SS = $('.joiner');
-		for (var i = 0; i < SS.length; i ++) {
-			var textcontent = SS[i].innerText || SS[i].textContent;
-			if (textcontent.search('Looking') >= 0) {
-				return SS[i];
-			}
-		}
-		return false;
-	}
-
 	// Places random tip in proper spot in DOM
 	function placeTip() {
-			var random = parseInt(Math.random() * tips.length);
-			var randTip = tips[random];
-			inputSpot = $(findInputSpot());
-			inputSpot.before( "<center><p id='headText'></p></center>" );
-			$("#headText").text(randTip);
-			$("#headText").css({"color": "#2ECC40", "font-size": "140%", "word-wrap": "break-word", "width": "65%"});
+		var random = parseInt(Math.random() * tips.length);
+		var randTip = tips[random];
+		var inputSpot = $(".spinner");
+		var headText = $("<div class='col-md-6 col-md-offset-3 text-center' style='margin-top: 20px; color: #8BC34A'></div>").insertAfter(inputSpot).wrapAll("<div class='row'></div>");
+
+		headText.text("Tip: " + randTip);
 	}
 
-	// If we are in loading page, try place the tip
-	if (document.URL.search('games/find')>=0) {
-		placeTip();
-	}
-	
+	placeTip();
 });
