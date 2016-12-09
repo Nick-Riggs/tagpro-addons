@@ -12,6 +12,7 @@ $(document).ready(function() {
         "Pressing your keys harder doesn't make you go faster. Don't break your keyboard!",
         "When you have the flag, timing is important. Be patient and wait for your team to set up blocks.",
         "Have two people stay on defense to prevent the other team from taking your flag.",
+        "Regrab (re) means standing on the enemy's empty flag tile. When your flag carrier dies, you take the flag so the enemy can't cap!"
         "Watch your speed when chasing. If you move too fast you might overcommit. Too slow and they'll go right past you!",
         "Try to not grab the flag when the opponents are coming in to cap. If you die there's one less person to stop them!",
         "For a fair game, consider waiting if there are fewer than 6 players.",
@@ -42,9 +43,7 @@ $(document).ready(function() {
         "If you start to become frustrated take a break!"
         "Press Enter to chat to everyone, or T to chat with your team."
         "Don't stand still for 30 seconds or the game will kick you out, thinking you're away from keyboard (AFK)."
-        "If you wrongfully get reported, don't worry. It takes 8 reports in 24 hours for them to have an effect."
-        "Learn how to enhance your gameplay experience on our <a href='https://www.reddit.com/r/TagPro/wiki/modding'>wiki page</a>!"
-        "Save your favorite moments with the magical <a href='https://www.reddit.com/r/TagPro/wiki/tagpro_replays_extension'>Replays extension.</a>"
+        "It takes 8 reports in 24 hours to be banned."
         "Change the look of your game on the <a href='/textures'>Texture Packs</a> tab."
         "If you have a small screen, you may want to Enable Viewport Scaling in the Settings."
         
