@@ -46,9 +46,18 @@ $(document).ready(function() {
     // Places random tip in proper spot in DOM
     function placeTip() {
         var random = Math.floor(Math.random() * tips.length);
-        var randTip = tips[random];
+        var randTip = tips.splice(random, 1);
+
+        if (!randTip.length) {
+            clearInterval(randTipInterval)
+            return;
+        }
+
+        randTip = randTip[0];
+
         var inputSpot = $(".spinner");
-        var headText = $("<div class='col-md-6 col-md-offset-3' style='margin-top: 20px;'></div>")
+        $("#tip").remove();
+        var headText = $("<div id='tip' style='margin-top: 20px;text-align: left;'></div>")
             .insertAfter(inputSpot)
             .wrapAll("<div class='row'></div>");
 
@@ -61,6 +70,7 @@ $(document).ready(function() {
     }
 
     placeTip();
+    var randTipInterval = setInterval(placeTip, 15000);
 });
 
 
