@@ -59,7 +59,7 @@ $(document).ready(function() {
         $("#tip").remove();
         var headText = $("<div id='tip' style='margin-top: 20px;text-align: left;'></div>")
             .insertAfter(inputSpot)
-            .wrapAll("<div class='row'></div>");
+            .wrapAll("<div class='row'><div class='col-sm-6 col-sm-offset-3'></div></div>");
 
         headText.html(
             "<div style='position: relative;padding-left: 40px; margin-left: 20px;'>"
