@@ -209,8 +209,17 @@ tagpro.ready(function()
   else if(!witness)
   {
    witness = true;
-   server = location.hostname;
-   port = parseInt(location.port, 10);
+   if(location.port) // local game (port 8xxx)
+   {
+    server = location.hostname;
+    port = parseInt(location.port, 10);
+   }
+   else // single world joiner (port 9xxx)
+   {
+    var parts = tagproConfig.gameSocket.split(':');
+    server = parts[0];
+    port = parseInt(parts[1], 10);
+   }
    gameNow = dateNow;
    if(complete)
    {
