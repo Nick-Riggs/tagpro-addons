@@ -40,7 +40,8 @@ $(document).ready(function() {
         "If you move slowly, you can change directions faster and have a better chance of juking enemies.",
         "Don't guard an empty base! Return the flag.",
         "Walls can be used to quickly change direction when you are trying to juke other players.",
-        "Have fun! If you're on a losing streak or getting frustrated, take a break."
+        "Have fun! If you're on a losing streak or getting frustrated, take a break.",
+        "Disconnecting from games can result in a temporary ban. :("
     ];
 
     // Places random tip in proper spot in DOM
