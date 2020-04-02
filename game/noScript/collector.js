@@ -2,7 +2,7 @@
 // by Ronding
 // https://tagpro.eu
 
-// Copyright (c) 2018, Jeroen van der Gun
+// Copyright (c) 2020, Jeroen van der Gun
 // All rights reserved.
 //
 // Use in source and binary forms, without modification, is permitted. Redistribution is not
@@ -149,13 +149,16 @@ tagpro.ready(function()
     for(var x = 0; x < mapDimensions[0]; x++)
     {
      var tile = data.tiles[x][y] * 10 >>> 0;
-     if(tile < 10) tile = 0;
-     else if(tile < 20) tile -= 9;
-     else if(tile < 90) tile = 4 + (tile / 10 >>> 0);
-     else if(tile < 100) tile -= 77;
-     else if(tile < 130) tile = 7 + (tile / 10 >>> 0);
-     else if(tile < 140) tile -= 110;
-     else tile = 8 + (tile / 10 >>> 0);
+          if(tile <  10) tile =  0;                     //  0  - 0   ->  0- 0
+     else if(tile <  20) tile -=   9;                   //  1.0- 1.4 ->  1- 5
+     else if(tile <  90) tile =  4 + (tile / 10 >>> 0); //  2  - 8   ->  6-12
+     else if(tile < 100) tile -=  77;                   //  9.0- 9.3 -> 13-16
+     else if(tile < 130) tile =  7 + (tile / 10 >>> 0); // 10  -12   -> 17-19
+     else if(tile < 140) tile -= 110;                   // 13.0-13.1 -> 20-21
+     else if(tile < 240) tile =  8 + (tile / 10 >>> 0); // 14  -23   -> 22-31
+     else if(tile < 250) tile -= 208;                   // 24.0-24.1 -> 32-33
+     else if(tile < 260) tile -= 216;                   // 25.0-25.1 -> 34-35
+     else                tile = 10 + (tile / 10 >>> 0); // 26  -53   -> 36-63
      if(tile == last) count++;
      else
      {
