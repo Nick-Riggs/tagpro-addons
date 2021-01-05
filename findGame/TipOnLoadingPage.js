@@ -28,7 +28,7 @@ $(document).ready(function() {
         "If your reserved name is the same as your displayed name, your name will turn green and have a check mark next to it.",
         "Earn degrees&deg; by winning games and unlock cool flairs.",
         "Check out the <a href='https://reddit.com/r/tagpro'>/r/TagPro subreddit</a> to read the latest news!",
-        "Meet TagPro players on our <a href='https://reddit.com/r/tagpro/wiki/mumble'>voice-chat mumble servers</a>. Microphone not required.",
+        "Meet TagPro players on our <a href='https://reddit.com/r/tagpro/wiki/discord'>Discord</a> and <a href='https://reddit.com/r/tagpro/wiki/mumble'>Mumble</a> voice-chat servers. Microphone not required.",
         "If you see someone break a rule you can report them by clicking on their ball, their name in chat, or the report button on the scoreboard.",
         "Don't get mad at your team! Instead, give them tips on how to improve.",
         "Team tiles don't make you go faster if you're holding the flag.",
