@@ -5,7 +5,6 @@
 //**************************************//
 
 $(document).ready(function() {
-    var num = 0;
     var tips = [
         "When chasing the opponent's flag carrier, always stay between them and the flag tile.",
         "Nobody on regrab? Get on regrab. Somebody on regrab? Chase the player holding your flag.",
